@@ -22,7 +22,7 @@ class Tfidf_summarizer():
         #collection_counter = Counter(collections_tokens)
         sent_saliences = []
         scored_sents = []
-        num_to_extract = 4
+        num_to_extract = max(1, int(extract_percent * len(sentences)))
 
         for index, sentence in enumerate(sentences):
             sent_salience = 0
