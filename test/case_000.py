@@ -17,16 +17,14 @@ class Test_summarizer(unittest.TestCase):
         print 'Starting test'
         d = {
             "text": text,
-            "extract_percent": .1,
+            "extract_percent": .4,
             }
-        #req = urllib2.Request('http://ec2-50-17-103-0.compute-1.amazonaws.com/summarizer')
         req = urllib2.Request('http://127.0.0.1:8004/summarize')
         req.add_header('Content-Type', 'application/json')
         response = urllib2.urlopen(req, json.dumps(d)).read()
         response = json.loads(response)
         summary = response['summary'].encode('utf-8', 'ignore')
         print 'Summary:\n%s' % summary
-        #self.assertEqual(best_answer.lower(), 'harold ramis')
 
 if __name__ == '__main__':
     unittest.main()

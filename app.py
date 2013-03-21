@@ -14,12 +14,6 @@ from tornado.options import define, options
 import tfidf_summarizer
 import json
 
-
-class CheckHandler(tornado.web.RequestHandler):
-    def get(self):
-        self.write('service online')
-
-
 class SummarizeHandler(tornado.web.RequestHandler):
     def post(self):
         data_json = tornado.escape.json_decode(self.request.body)
@@ -32,7 +26,6 @@ class SummarizeHandler(tornado.web.RequestHandler):
 
 
 handlers = [
-            (r"/check", CheckHandler),
             (r"/summarize", SummarizeHandler),
             ]
 
